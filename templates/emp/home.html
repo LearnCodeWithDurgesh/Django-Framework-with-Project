@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    {% include 'emp/navbar.html' %}
+
+    <h1 class="text-center my-3">Employee Management</h1>
+    <h1 class="text-center my-3">List of Employees</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#SNO.</th>
+                    <th>NAME</th>
+                    <th>EMP ID</th>
+                    <th>PHONE</th>
+                    <th>WORKING</th>
+                    <th>DEPARTMENT</th>
+                    <th>ADDRESS</th>
+                    <th>ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for e in emps %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{e.name}}</td>
+                    <td>{{e.emp_id}}</td>
+                    <td>{{e.phone}}</td>
+                    <td>{{e.working}}</td>
+                    <td>{{e.department}}</td>
+                    <td>{{e.address}}</td>
+                    <td>
+                      <a href="/emp/delete-emp/{{e.id}}" class="btn btn-danger btn-sm">Delete</a>
+                      <a href="/emp/update-emp/{{e.id}}" class="btn btn-dark btn-sm">Update</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page</title>
+  </head>
+  <body>
+    <div class="container" style="text-align: center">
+      {% include 'navbar.html' %}
+
+
+
+      <h1>Welcome to our website</h1>
+
+      <form action="/index/" method="POST">
+        {% csrf_token %}
+        <input type="checkbox" value="True" name="check">
+        <button>Send</button>
+  
+      </form>
+    
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum, ab
+        mollitia vero tempora ipsa perferendis praesentium repellendus. A sint
+        quas officia quo esse eos exercitationem voluptates unde illo quisquam,
+        id, illum voluptatem cumque reiciendis ad assumenda, aspernatur
+        molestiae. Vitae quidem suscipit, culpa illum ullam ipsa cum quis
+        voluptatum dolorem possimus?
+      </p>
+      <button>Contact US</button>
+
+      <!-- accessing dynamic values -->
+
+      {% if isActive %}
+      <div>
+        <h1>Todays date is {{date}}</h1>
+        <h1>Name is {{name}}</h1>
+        <hr />
+        <h1>Student data</h1>
+        <h2>Student name : {{student_data.student_name}}</h2>
+        <h2>Student college : {{student_data.student_college}}</h2>
+        <h2>Student city : {{student_data.student_city}}</h2>
+        <hr>
+        <h1>Favorite Programs</h1>
+      
+        {% for p in list_of_programs %}
+
+        <h3>{{p}}</h3>
+
+        {% endfor %}
+      
+      </div>
+
+
+
+      {% endif %}
+    </div>
+  </body>
+</html>

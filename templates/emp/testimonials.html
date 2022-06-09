@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    {% include 'emp/navbar.html' %}
+
+    <h1 class="text-center my-3">Testimonials</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#SNO.</th>
+                    <th>NAME</th>
+                    <th>Testimonials</th>
+                    <th>Rating</th>
+                 
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for t in testi %}
+                  <tr>
+                 
+                    <td>
+                        {{forloop.counter}}
+                    </td>
+                    <td>
+                        <img style="max-width: 200px;" src="/media/{{t.picture}}" alt="">
+                        {{t.name}}
+                    </td>
+                    <td>
+                        {{t.testimonial}}
+                    </td>
+                    <td>
+                        {{t.rating}}
+                    </td>
+                  
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
